@@ -1,4 +1,5 @@
 import DeferredValue from "./component/DeferredValue";
+import Parent from "./component/Parent";
 import ReactFiber from "./component/ReactFiber";
 
 function App() {
@@ -9,6 +10,9 @@ function App() {
       <ReactFiber />
       <hr />
       <DeferredValue />
+
+      <hr />
+      <Parent />
     </div>
   );
 }
