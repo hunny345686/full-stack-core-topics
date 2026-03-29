@@ -1,4 +1,5 @@
 import React, { useState, useDeferredValue } from "react";
+import { List } from "react-window";
 
 function slowSearch(query) {
   const result = [];
@@ -8,28 +9,38 @@ function slowSearch(query) {
   return result;
 }
 
+/** react-window v2: row data comes via `rowProps`, not closure over `results`. */
+function Row({ index, style, ariaAttributes, results }) {
+  console.log({ index, style, ariaAttributes, results });
+  return (
+    <div style={style} {...ariaAttributes}>
+      {results[index]}
+    </div>
+  );
+}
+
 export default function DeferredValue() {
   const [query, setQuery] = useState("");
 
-  // delay value for rendering
   const deferredQuery = useDeferredValue(query);
 
   const results = slowSearch(deferredQuery);
 
   function handleChange(e) {
-    const value = e.target.value;
-    setQuery(value);
+    setQuery(e.target.value);
   }
 
   return (
     <div>
       <input value={query} onChange={handleChange} placeholder="Search..." />
 
-      <ul>
-        {results.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
+      <List
+        rowComponent={Row}
+        rowCount={results.length}
+        rowHeight={30}
+        rowProps={{ results }}
+        style={{ height: 400, width: 300 }}
+      />
     </div>
   );
 }

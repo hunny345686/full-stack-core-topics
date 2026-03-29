@@ -1,7 +1,20 @@
+import { lazy, Suspense } from "react";
 import DeferredValue from "./component/DeferredValue";
 import Parent from "./component/Parent";
 import ReactFiber from "./component/ReactFiber";
 
+// Not work due to lazy will expect to retn a pronisss
+// const DashBoradLazy = lazy(() =>
+//   setTimeout(() => import("./component/Dashboard.js"), 1000)
+// );
+
+const ParentLazy = lazy(() => import("./component/Parent"));
+const DashBoradLazy = lazy(
+  () =>
+    new Promise((resolve) => {
+      setTimeout(() => resolve(import("./component/Dashboard.js")), 5000);
+    })
+);
 function App() {
   return (
     <div className="container">
@@ -12,7 +25,15 @@ function App() {
       <DeferredValue />
 
       <hr />
+      {/* Without Lazy Loafing */}
       <Parent />
+      {/* With Lazy Loading */}
+      <ParentLazy />
+      <hr />
+
+      <Suspense fallback={<h2>Loiding</h2>}>
+        <DashBoradLazy />
+      </Suspense>
     </div>
   );
 }
