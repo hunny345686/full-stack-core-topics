@@ -3,6 +3,8 @@ import DeferredValue from "./component/DeferredValue";
 import Parent from "./component/Parent";
 import ReactFiber from "./component/ReactFiber";
 
+import ContextParant from "./ContextAPI/ContextParant"
+
 // Not work due to lazy will expect to retn a pronisss
 // const DashBoradLazy = lazy(() =>
 //   setTimeout(() => import("./component/Dashboard.js"), 1000)
@@ -34,6 +36,10 @@ function App() {
       <Suspense fallback={<h2>Loiding</h2>}>
         <DashBoradLazy />
       </Suspense>
+      <hr/>
+      {/* Context API */}
+
+      <ContextParant/>
     </div>
   );
 }

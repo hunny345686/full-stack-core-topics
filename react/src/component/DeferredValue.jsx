@@ -11,7 +11,6 @@ function slowSearch(query) {
 
 /** react-window v2: row data comes via `rowProps`, not closure over `results`. */
 function Row({ index, style, ariaAttributes, results }) {
-  console.log({ index, style, ariaAttributes, results });
   return (
     <div style={style} {...ariaAttributes}>
       {results[index]}
