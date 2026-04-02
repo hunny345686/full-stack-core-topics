@@ -5,6 +5,8 @@ import ReactFiber from "./component/ReactFiber";
 
 import ContextParant from "./ContextAPI/ContextParant";
 import Zustand from "./zustand/UI/Zustand.jsx";
+import HigherOrderComponent from "./ReactPattern/HigherOrderComponent.jsx";
+import RenderPropes from "./ReactPattern/RenderPropes.jsx";
 
 // Not work due to lazy will expect to retn a pronisss
 // const DashBoradLazy = lazy(() =>
@@ -45,6 +47,13 @@ function App() {
       {/* Zustand */}
 
       <Zustand />
+
+      {/* Higher Order Component  */}
+      <HigherOrderComponent />
+
+      <div className="container">
+        <RenderPropes />
+      </div>
     </div>
   );
 }
