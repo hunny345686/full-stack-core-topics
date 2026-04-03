@@ -2,7 +2,6 @@ import { lazy, Suspense } from "react";
 import DeferredValue from "./component/DeferredValue";
 import Parent from "./component/Parent";
 import ReactFiber from "./component/ReactFiber";
-
 import ContextParant from "./ContextAPI/ContextParant";
 import Zustand from "./zustand/UI/Zustand.jsx";
 import HigherOrderComponent from "./ReactPattern/HigherOrderComponent.jsx";
@@ -51,9 +50,8 @@ function App() {
       {/* Higher Order Component  */}
       <HigherOrderComponent />
 
-      <div className="container">
-        <RenderPropes />
-      </div>
+      <RenderPropes />
+      <div className="container"></div>
     </div>
   );
 }
